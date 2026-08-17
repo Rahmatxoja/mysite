@@ -5,6 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rahmatxo'ja Muhammadxo'jayev</title>
 <meta name="description" content="Grafik dizayner va taqdimot dizayni bo'yicha mutaxassis. 5 yillik tajriba, 200+ sotuvchi taqdimot.">
+<link rel="canonical" href="https://rahmatxoja.github.io/mysite/">
+
+<!-- Brauzer yorlig'i belgisi. SVG zamonaviy brauzerlar uchun,
+     PNG eskilar uchun, apple-touch-icon iPhone bosh ekrani uchun. -->
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<!-- Mobil brauzer paneli rangi. Meta tegda o'zgaruvchi ishlamaydi,
+     shuning uchun qiymatlar --ground tokenidan ko'chirilgan. -->
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EDEFF4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0A0E18">
+
+<!-- Havola Telegram yoki ijtimoiy tarmoqqa tashlanganda chiqadigan karta.
+     og:image to'liq manzil bo'lishi shart — nisbiy yo'l ishlamaydi. -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rahmatxoja.github.io/mysite/">
+<meta property="og:site_name" content="Rahmatxo'ja Muhammadxo'jayev">
+<meta property="og:locale" content="uz_UZ">
+<meta property="og:title" content="Rahmatxo'ja Muhammadxo'jayev — taqdimot dizayneri">
+<meta property="og:description" content="Sotuv taqdimotlari, investor pitch decklari va kompaniya profillari. Mazmunni tartibga solamiz, keyin dizayn qilamiz.">
+<meta property="og:image" content="https://rahmatxoja.github.io/mysite/assets/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rahmatxo'ja Muhammadxo'jayev — taqdimot dizayneri">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="stylesheet" href="css/style.css">
 <!-- defer YO'Q: mavzu sahifa chizilishidan oldin qo'llanishi kerak -->
 <script src="js/main.js"></script>
@@ -21,7 +49,9 @@
     <nav class="nav">
       <a href="#haqimda">Men haqimda</a>
       <a href="#xizmatlar">Xizmatlar</a>
-      <a href="#portfolio">Portfolio</a>
+      <a href="#ishlarim">Ishlarim</a>
+      <a href="#fikrlar">Fikrlar</a>
+      <a href="#savol-javob">Savol-javob</a>
     </nav>
     <div class="topbar-actions">
       <button class="theme-toggle" id="themeToggle" type="button">
@@ -91,7 +121,7 @@
     <p class="eyebrow">Xizmatlar</p>
     <h2>Nima qilib beraman</h2>
     <p class="lede">Har bir ish mazmunni tartibga solishdan boshlanadi — dizayn keyin keladi.</p>
-    <div class="grid-2">
+    <div class="grid-2 stagger">
       <article class="card">
         <div class="card-dot">01</div>
         <h3>Sotuv taqdimotlari</h3>
@@ -115,11 +145,11 @@
     </div>
   </section>
 
-  <section class="panel" id="portfolio">
-    <p class="eyebrow">Portfolio</p>
+  <section class="panel" id="ishlarim">
+    <p class="eyebrow">Ishlarim</p>
     <h2>Tanlangan ishlar</h2>
     <p class="lede">Har bir loyiha bo'yicha to'liq deckni Telegram orqali yuborishim mumkin.</p>
-    <ul class="works">
+    <ul class="works stagger">
       <li class="work">
         <div class="thumb">
           <div class="blob blob-1"></div>
@@ -129,6 +159,7 @@
         </div>
         <span class="work-title">Bir Group</span>
         <span class="work-meta">Sotuv taqdimoti · 24 slayd</span>
+        <p class="work-desc">Mahsulotni yangi mijozlarga tanishtiruvchi deck — har bir bo'lim xaridorning navbatdagi savoliga javob beradi.</p>
       </li>
       <li class="work">
         <div class="thumb">
@@ -139,6 +170,7 @@
         </div>
         <span class="work-title">Yuksalish Group</span>
         <span class="work-meta">Pitch deck · 18 slayd</span>
+        <p class="work-desc">Investorlar uchun qisqa deck: muammo, yechim, bozor va biznes modeli — ortiqcha slaydsiz.</p>
       </li>
       <li class="work">
         <div class="thumb">
@@ -149,6 +181,7 @@
         </div>
         <span class="work-title">Sabum Group</span>
         <span class="work-meta">Kompaniya profili · 32 slayd</span>
+        <p class="work-desc">Kompaniyani tanishtiruvchi rasmiy hujjat: yo'nalishlar, loyihalar va jamoa bir tizimda.</p>
       </li>
     </ul>
   </section>
@@ -156,11 +189,74 @@
   <section class="panel">
     <p class="eyebrow">Hamkorlar</p>
     <h2>Ishonch bildirgan kompaniyalar</h2>
-    <ul class="clients">
+    <ul class="clients stagger">
       <li>Bir Group</li>
       <li>Yuksalish Group</li>
       <li>Sabum Group</li>
     </ul>
+  </section>
+
+  <section class="panel" id="fikrlar">
+    <p class="eyebrow">Mijozlar fikri</p>
+    <h2>Birga ishlagan mijozlar nima deydi</h2>
+    <ul class="quotes stagger">
+      <li class="quote is-placeholder">
+        <span class="ph-badge">To'ldiring</span>
+        <p class="quote-text">Mijozning haqiqiy sharhi shu yerga yoziladi — bir yoki ikki jumla yetarli.</p>
+        <p class="quote-who">
+          <span class="quote-name">Ism Familiya</span>
+          <span class="quote-role">Lavozim · Kompaniya</span>
+        </p>
+      </li>
+      <li class="quote is-placeholder">
+        <span class="ph-badge">To'ldiring</span>
+        <p class="quote-text">Mijozning haqiqiy sharhi shu yerga yoziladi — bir yoki ikki jumla yetarli.</p>
+        <p class="quote-who">
+          <span class="quote-name">Ism Familiya</span>
+          <span class="quote-role">Lavozim · Kompaniya</span>
+        </p>
+      </li>
+      <li class="quote is-placeholder">
+        <span class="ph-badge">To'ldiring</span>
+        <p class="quote-text">Mijozning haqiqiy sharhi shu yerga yoziladi — bir yoki ikki jumla yetarli.</p>
+        <p class="quote-who">
+          <span class="quote-name">Ism Familiya</span>
+          <span class="quote-role">Lavozim · Kompaniya</span>
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="panel" id="savol-javob">
+    <p class="eyebrow">Savol-javob</p>
+    <h2>Ko'p so'raladigan savollar</h2>
+    <div class="faq stagger">
+      <details>
+        <summary>Ish qanday boshlanadi?</summary>
+        <div class="faq-body">
+          <p>Avval mazmun bilan ishlaymiz: nimani, kimga va qanday tartibda aytmoqchi ekanligingizni birga tartibga solamiz. Dizayn shundan keyin boshlanadi — shunda har bir slayd o'z vazifasini biladi.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Matnni o'zim tayyorlashim kerakmi?</summary>
+        <div class="faq-body">
+          <p>Shart emas. Tayyor matningiz bo'lsa ish tezroq ketadi, bo'lmasa mazmunni birgalikda tuzamiz — savollar beraman, javoblaringizdan tuzilma chiqaramiz.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Taqdimotni qaysi formatda olaman?</summary>
+        <div class="faq-body">
+          <p>PowerPoint yoki Keynote faylida — keyinchalik o'zingiz tahrirlay olasiz. Jamoangiz mustaqil ishlashi uchun shablon ham tayyorlab beraman: ranglar, shriftlar va slayd tiplari bilan.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Qancha vaqt oladi va narxi qancha?</summary>
+        <div class="faq-body is-placeholder">
+          <span class="ph-badge">To'ldiring</span>
+          <p>Bu yerga o'z shartlaringizni yozing: odatdagi muddat, narx yoki hisoblash usuli. Bu ma'lumotni men bilmayman, shuning uchun to'qib yozmadim.</p>
+        </div>
+      </details>
+    </div>
   </section>
 
   <section class="contact" id="aloqa">

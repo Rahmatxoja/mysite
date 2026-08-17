@@ -15,8 +15,8 @@
 .idea/
 *.swp
 
-# Claude Code — mahalliy ruxsatlar, faqat shu kompyuterga tegishli
-.claude/settings.local.json
+# Claude Code — faqat shu kompyuterga tegishli sozlamalar
+.claude/
 
 # Loglar va vaqtinchalik fayllar
 *.log

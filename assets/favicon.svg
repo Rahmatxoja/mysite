@@ -1,0 +1,12 @@
+<!--
+  Favicon. Bu alohida fayl, sayt CSS'iga ulanmagan — shuning uchun
+  :root tokenlaridan foydalanib bo'lmaydi va rang to'g'ridan-to'g'ri
+  yozilgan. #1F6FEF — style.css dagi --blue bilan bir xil qiymat;
+  birini o'zgartirsangiz, ikkinchisini ham yangilang.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="15" fill="#1F6FEF"/>
+  <text x="32" y="46"
+        font-family="SF Pro Display,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif"
+        font-size="42" font-weight="700" fill="#FFFFFF" text-anchor="middle">R</text>
+</svg>

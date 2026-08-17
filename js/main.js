@@ -64,7 +64,60 @@
     });
   }
 
-  /* --- 4. DOM tayyor bo'lganda ulaymiz --- */
+  /* --- 4. Scroll'da bo'limlarni ko'rsatish ---
+     Yashirish CSS'da .js-anim belgisiga bog'langan, belgini esa shu
+     yer qo'yadi. Ya'ni JS ishlamasa hech narsa yashirilmaydi —
+     sayt animatsiyasiz, lekin to'liq ko'rinadi. */
+  function setupScrollReveal() {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var targets = document.querySelectorAll('.panel, .contact');
+
+    if (reduced || !('IntersectionObserver' in window) || !targets.length) return;
+
+    root.classList.add('js-anim');
+    Array.prototype.forEach.call(targets, function (el) {
+      el.classList.add('on-scroll');
+    });
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        /* Klasslar joyida qoladi. Ilgari ular animatsiyadan keyin
+           olib tashlanardi, lekin o'tish tugamasdan qoida yo'qolsa
+           brauzer elementni opacity:0 holatida qotirib qo'yardi —
+           ikkita bo'lim butunlay ko'rinmay qolgandi. */
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+
+    Array.prototype.forEach.call(targets, function (el) {
+      io.observe(el);
+    });
+  }
+
+  /* --- 5. Yopishgan panel balandligini o'lchab qo'yamiz ---
+     CSS'dagi --topbar-h qiymati taxminiy: panel qancha qatorga
+     yoyilishi shrift va tilga qarab o'zgaradi. Haqiqiy balandlikni
+     o'lchab qo'ysak, bo'limga o'tganda sarlavha panel ostida
+     qolmaydi — hech qaysi kenglikni qo'lda sozlash kerak emas. */
+  function syncTopbarHeight() {
+    var bar = document.querySelector('.topbar');
+    if (!bar) return;
+    root.style.setProperty('--topbar-h', Math.round(bar.getBoundingClientRect().height) + 'px');
+  }
+
+  var resizeTick = false;
+  function onResize() {
+    if (resizeTick) return;
+    resizeTick = true;
+    window.requestAnimationFrame(function () {
+      resizeTick = false;
+      syncTopbarHeight();
+    });
+  }
+
+  /* --- 6. DOM tayyor bo'lganda ulaymiz --- */
   document.addEventListener('DOMContentLoaded', function () {
     btn = document.getElementById('themeToggle');
     label = document.getElementById('themeLabel');
@@ -73,6 +126,9 @@
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', sync);
 
     pruneMissingImages();
+    setupScrollReveal();
+    syncTopbarHeight();
+    window.addEventListener('resize', onResize);
     sync();
   });
 })();
