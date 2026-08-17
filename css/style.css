@@ -1,0 +1,678 @@
+/* =========================================================
+   Rahmatxo'ja Muhammadxo'jayev — vizitka sayt
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   SHRIFT
+   Sayt SF Pro Display'da ishlaydi (macOS, iPhone, iPad'da
+   tizimda mavjud). Windows'da Segoe UI, Android'da Roboto
+   avtomatik tushadi — hammasi bir xil geometrik-neytral oila.
+
+   Creato Display litsenziyali shrift. Agar fayllarini sotib
+   olsangiz, assets/fonts/ ichiga tashlab, quyidagi bloklarni
+   izohdan chiqaring — u avtomatik birinchi o'ringa o'tadi.
+
+   @font-face{
+     font-family:"Creato Display";
+     src:url("../assets/fonts/CreatoDisplay-Regular.woff2") format("woff2");
+     font-weight:400; font-style:normal; font-display:swap;
+   }
+   @font-face{
+     font-family:"Creato Display";
+     src:url("../assets/fonts/CreatoDisplay-Bold.woff2") format("woff2");
+     font-weight:700; font-style:normal; font-display:swap;
+   }
+--------------------------------------------------------- */
+
+:root{
+  --ground:#EDEFF4;
+  --surface:#FFFFFF;
+  --surface-2:#F6F7FA;
+  --ink:#121A2E;
+  --muted:#5B6478;
+  --hairline:#E2E6EF;
+
+  /* --blue: to'ldirilgan yuzalar uchun (ustida oq matn turadi)
+     --blue-ink: ko'k MATN uchun, yorug' fonda o'qilishi kerak */
+  --blue:#1F6FEF;
+  --blue-hover:#1560DC;
+  --blue-ink:#1657C9;
+  --blue-soft:#E7F0FE;
+  --on-blue:#FFFFFF;
+
+  /* hero mesh ranglari */
+  --mesh-1:#3B82F6;
+  --mesh-2:#5AC8E8;
+  --mesh-3:#B9C4F5;
+  --mesh-4:#8FE3D8;
+  --mesh-base:#E9ECF3;
+  --mesh-alpha:.75;
+
+  --font-display:"Creato Display","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --font-body:"Creato Display","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+
+  --r-xl:34px;
+  --r-lg:26px;
+  --r-md:18px;
+  --pad:clamp(22px,4vw,44px);
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0A0E18;
+    --surface:#151C2B;
+    --surface-2:#1C2436;
+    --ink:#EDF1F8;
+    --muted:#98A2B8;
+    --hairline:#252E42;
+
+    --blue:#4A8CFF;
+    --blue-hover:#6BA1FF;
+    --blue-ink:#6BA1FF;
+    --blue-soft:#182740;
+    --on-blue:#0A1020;
+
+    --mesh-1:#2557C8;
+    --mesh-2:#2E7FA0;
+    --mesh-3:#3B4478;
+    --mesh-4:#2C7A72;
+    --mesh-base:#101624;
+    --mesh-alpha:.85;
+  }
+}
+
+:root[data-theme="dark"]{
+  --ground:#0A0E18;
+  --surface:#151C2B;
+  --surface-2:#1C2436;
+  --ink:#EDF1F8;
+  --muted:#98A2B8;
+  --hairline:#252E42;
+
+  --blue:#4A8CFF;
+  --blue-hover:#6BA1FF;
+  --blue-ink:#6BA1FF;
+  --blue-soft:#182740;
+  --on-blue:#0A1020;
+
+  --mesh-1:#2557C8;
+  --mesh-2:#2E7FA0;
+  --mesh-3:#3B4478;
+  --mesh-4:#2C7A72;
+  --mesh-base:#101624;
+  --mesh-alpha:.85;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:14px clamp(12px,2.5vw,22px) clamp(40px,7vw,72px);
+  display:flex;
+  flex-direction:column;
+  gap:clamp(14px,2vw,18px);
+}
+
+a{color:inherit}
+
+/* ---------- sarlavha paneli ---------- */
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:10px 12px 10px 8px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  text-decoration:none;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:15px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.brand-mark{
+  width:34px;height:34px;
+  border-radius:11px;
+  background:var(--blue);
+  color:var(--on-blue);
+  display:grid;
+  place-items:center;
+  font-size:13px;
+  letter-spacing:.02em;
+  flex:none;
+}
+.brand b{font-weight:700}
+.brand i{font-style:normal;color:var(--blue-ink)}
+
+.nav{
+  display:flex;
+  gap:clamp(14px,2.4vw,30px);
+  font-size:15px;
+}
+.nav a{
+  text-decoration:none;
+  color:var(--muted);
+  transition:color .18s ease;
+}
+.nav a:hover{color:var(--ink)}
+
+.topbar-actions{display:flex;align-items:center;gap:10px}
+
+.theme-toggle{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  height:42px;
+  padding:0 15px;
+  border-radius:999px;
+  background:var(--surface);
+  border:1px solid var(--hairline);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:13px;
+  cursor:pointer;
+  transition:border-color .18s ease;
+}
+.theme-toggle:hover{border-color:var(--blue)}
+.theme-toggle .dot{
+  width:10px;height:10px;
+  border-radius:50%;
+  background:var(--blue);
+  flex:none;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  height:46px;
+  padding:0 22px;
+  border-radius:999px;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:15px;
+  text-decoration:none;
+  border:1px solid transparent;
+  white-space:nowrap;
+  transition:background-color .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-dark{background:var(--ink);color:var(--ground)}
+.btn-blue{background:var(--blue);color:var(--on-blue)}
+.btn-blue:hover{background:var(--blue-hover)}
+.btn-light{background:var(--surface);color:var(--ink)}
+.btn-outline{border-color:currentColor}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  border-radius:var(--r-xl);
+  background:var(--mesh-base);
+  overflow:hidden;
+  min-height:clamp(420px,58vw,600px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:clamp(38px,6vw,72px) clamp(20px,4vw,56px);
+  isolation:isolate;
+}
+/* Yumshoq gradient "mesh" — bir nechta xiralashtirilgan dog'lar */
+.blob{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(70px);
+  opacity:var(--mesh-alpha);
+  z-index:-1;
+  pointer-events:none;
+}
+.blob-1{width:60%;height:90%;left:-14%;top:-6%;background:var(--mesh-1)}
+.blob-2{width:55%;height:80%;left:16%;top:34%;background:var(--mesh-2)}
+.blob-3{width:50%;height:75%;right:-8%;top:-14%;background:var(--mesh-3)}
+.blob-4{width:52%;height:70%;right:4%;bottom:-18%;background:var(--mesh-4)}
+
+h1{
+  margin:0;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(1.7rem,5vw,3.4rem);
+  line-height:1.42;
+  letter-spacing:-.028em;
+  text-align:center;
+  max-width:16ch;
+  margin-inline:auto;
+}
+/* Har bir qator alohida oq "stiker" bo'lib chiqadi */
+.sticker{
+  background:var(--surface);
+  color:var(--ink);
+  padding:.16em .38em;
+  border-radius:.42em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.ava{
+  display:inline-block;
+  vertical-align:-.22em;
+  width:1.05em;height:1.05em;
+  border-radius:50%;
+  object-fit:cover;
+  object-position:center 20%;
+  background:var(--blue-soft);
+  margin:0 .04em;
+}
+/* Tugma stiker qatorining pastki chetiga bir oz kirib turadi */
+.hero-cta-wrap{
+  display:flex;
+  justify-content:center;
+  /* Kichik ekranda qator balandligi kichik — ustma-ustlik ham kichrayadi */
+  margin-top:clamp(-18px,-1.2vw,-6px);
+}
+.hero-cta-wrap .btn{height:54px;padding:0 28px;font-size:16px}
+
+.hero-foot{
+  position:absolute;
+  left:clamp(20px,4vw,56px);
+  right:clamp(20px,4vw,56px);
+  bottom:clamp(20px,3vw,34px);
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.icon-links{display:flex;gap:9px}
+.icon-link{
+  width:46px;height:46px;
+  border-radius:50%;
+  background:var(--ink);
+  color:var(--ground);
+  display:grid;
+  place-items:center;
+  text-decoration:none;
+  transition:transform .18s ease;
+}
+.icon-link:hover{transform:translateY(-2px)}
+.icon-link svg{width:20px;height:20px;fill:currentColor}
+
+.hero-badge{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:14px;
+  line-height:1.3;
+  text-align:right;
+  color:var(--ink);
+}
+.hero-badge .pill{
+  background:var(--surface);
+  padding:8px 16px;
+  border-radius:999px;
+}
+
+/* ---------- bento ---------- */
+.bento{
+  display:grid;
+  gap:clamp(14px,2vw,18px);
+  grid-template-columns:1fr;
+}
+@media (min-width:880px){
+  .bento{grid-template-columns:1.25fr .85fr .9fr}
+}
+
+.tile{
+  border-radius:var(--r-lg);
+  background:var(--surface);
+  padding:var(--pad);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:22px;
+  min-height:300px;
+  overflow:hidden;
+}
+.tile-blue{background:var(--blue);color:var(--on-blue)}
+.tile-blue .tile-text{color:var(--on-blue)}
+
+.tile-icon{
+  width:46px;height:46px;
+  border-radius:14px 14px 14px 5px;
+  background:var(--surface);
+  color:var(--blue-ink);
+  display:grid;
+  place-items:center;
+  flex:none;
+}
+.tile-icon svg{width:22px;height:22px;fill:currentColor}
+.tile-text{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(1.15rem,2.2vw,1.45rem);
+  line-height:1.32;
+  letter-spacing:-.018em;
+  margin:0;
+}
+.tile-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  align-self:flex-start;
+  min-width:190px;
+  height:52px;
+  padding:0 8px 0 24px;
+  border-radius:999px;
+  background:var(--surface);
+  color:var(--ink);
+  text-decoration:none;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  transition:transform .18s ease;
+}
+.tile-link:hover{transform:translateY(-2px)}
+.tile-link span{
+  width:36px;height:36px;
+  border-radius:50%;
+  background:var(--blue-soft);
+  color:var(--blue-ink);
+  display:grid;
+  place-items:center;
+  font-size:19px;
+  flex:none;
+}
+
+.tile-stat{
+  position:relative;
+  justify-content:space-between;
+  background:var(--surface);
+}
+.stat-num{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(3.2rem,7vw,4.6rem);
+  line-height:.95;
+  letter-spacing:-.05em;
+  font-variant-numeric:tabular-nums;
+  margin:0;
+}
+.stat-cap{
+  align-self:flex-start;
+  background:var(--surface-2);
+  border-radius:var(--r-md);
+  padding:12px 18px;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(1.05rem,2vw,1.3rem);
+  line-height:1.3;
+  letter-spacing:-.018em;
+}
+
+.tile-photo{
+  position:relative;
+  padding:0;
+  min-height:340px;
+  justify-content:flex-end;
+  background:var(--surface-2);
+}
+.tile-photo img{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 18%;
+}
+.photo-cap{
+  position:relative;
+  margin:var(--pad);
+  align-self:flex-start;
+  background:var(--surface);
+  color:var(--ink);
+  border-radius:var(--r-md);
+  padding:12px 18px;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(1.05rem,2vw,1.25rem);
+  line-height:1.3;
+  letter-spacing:-.018em;
+}
+
+/* ---------- bo'limlar ---------- */
+.panel{
+  border-radius:var(--r-xl);
+  background:var(--surface);
+  padding:clamp(28px,5vw,58px);
+}
+.eyebrow{
+  display:inline-block;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--blue-ink);
+  margin:0 0 16px;
+}
+h2{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(1.55rem,3.6vw,2.5rem);
+  line-height:1.15;
+  letter-spacing:-.032em;
+  margin:0 0 16px;
+  text-wrap:balance;
+}
+.lede{
+  max-width:60ch;
+  color:var(--muted);
+  margin:0;
+  font-size:1.02rem;
+}
+.lede strong{color:var(--ink);font-weight:600}
+
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:clamp(12px,1.6vw,16px);
+  margin-top:clamp(26px,4vw,38px);
+}
+@media (min-width:700px){
+  .grid-2{grid-template-columns:1fr 1fr}
+}
+
+.card{
+  background:var(--surface-2);
+  border-radius:var(--r-lg);
+  padding:clamp(22px,3vw,30px);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.card-dot{
+  width:34px;height:34px;
+  border-radius:12px 12px 12px 4px;
+  background:var(--blue-soft);
+  color:var(--blue-ink);
+  display:grid;
+  place-items:center;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:15px;
+  margin-bottom:4px;
+}
+.card h3{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:1.15rem;
+  line-height:1.25;
+  letter-spacing:-.022em;
+  margin:0;
+}
+.card p{
+  margin:0;
+  color:var(--muted);
+  font-size:.96rem;
+  line-height:1.55;
+}
+
+/* ---------- portfolio ---------- */
+.works{
+  list-style:none;
+  margin:clamp(26px,4vw,38px) 0 0;
+  padding:0;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:clamp(14px,2vw,18px);
+}
+@media (min-width:760px){
+  .works{grid-template-columns:repeat(3,1fr)}
+}
+.work{display:flex;flex-direction:column;gap:14px}
+.thumb{
+  position:relative;
+  aspect-ratio:16/10;
+  border-radius:var(--r-lg);
+  overflow:hidden;
+  background:var(--mesh-base);
+  display:flex;
+  align-items:flex-end;
+  padding:18px;
+  isolation:isolate;
+}
+/* Kichik blokda 70px blur rangni yuvib yuboradi */
+.thumb .blob{filter:blur(32px);opacity:.95}
+.thumb img{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+}
+.thumb .cover{
+  position:relative;
+  background:var(--surface);
+  color:var(--ink);
+  border-radius:999px;
+  padding:8px 16px;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:-.01em;
+}
+.work-title{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:1.1rem;
+  letter-spacing:-.022em;
+}
+.work-meta{
+  color:var(--muted);
+  font-size:13px;
+  letter-spacing:.02em;
+}
+
+/* ---------- hamkorlar ---------- */
+.clients{
+  list-style:none;
+  margin:clamp(26px,4vw,38px) 0 0;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.clients li{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  background:var(--surface-2);
+  border-radius:999px;
+  padding:14px 24px;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:1.02rem;
+  letter-spacing:-.018em;
+}
+.clients li::before{
+  content:"";
+  width:9px;height:9px;
+  border-radius:50%;
+  background:var(--blue);
+  flex:none;
+}
+
+/* ---------- aloqa ---------- */
+.contact{
+  position:relative;
+  border-radius:var(--r-xl);
+  background:var(--blue);
+  color:var(--on-blue);
+  padding:clamp(32px,5.5vw,64px);
+  overflow:hidden;
+}
+.contact h2{margin-bottom:14px}
+.contact .lede{color:var(--on-blue)}
+.contact .eyebrow{color:var(--on-blue)}
+.contact-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:clamp(26px,4vw,36px);
+}
+.contact .btn{height:54px;padding:0 26px;font-size:16px}
+
+footer{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 20px;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:13px;
+  padding:6px 14px 0;
+}
+
+/* ---------- animatsiya ---------- */
+.reveal{opacity:0;transform:translateY(16px);animation:rise .75s cubic-bezier(.2,.7,.3,1) forwards}
+.d1{animation-delay:.06s}
+.d2{animation-delay:.16s}
+.d3{animation-delay:.26s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal{animation:none;opacity:1;transform:none}
+  *{transition:none!important}
+}
+
+@media (max-width:720px){
+  .nav{display:none}
+  .hero{min-height:0;padding-bottom:clamp(96px,22vw,130px)}
+  .hero-badge{display:none}
+  /* 300px eng kam balandlik mobilda ortiqcha bo'shliq hosil qiladi */
+  .bento .tile{min-height:0;gap:26px}
+  .bento .tile-photo{min-height:300px}
+}
+
+@media (max-width:480px){
+  /* Torlikda almashtirgich faqat nuqtaga qisqaradi */
+  .theme-toggle{padding:0;width:42px;justify-content:center}
+  #themeLabel{display:none}
+  .brand span{font-size:13px}
+}

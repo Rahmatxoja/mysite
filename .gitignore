@@ -1,0 +1,23 @@
+# macOS tizim fayllari
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Maxfiy ma'lumotlar — hech qachon repoga tushmasin
+.env
+.env.*
+*.pem
+*.key
+
+# Muharrir sozlamalari
+.vscode/
+.idea/
+*.swp
+
+# Claude Code — mahalliy ruxsatlar, faqat shu kompyuterga tegishli
+.claude/settings.local.json
+
+# Loglar va vaqtinchalik fayllar
+*.log
+node_modules/
